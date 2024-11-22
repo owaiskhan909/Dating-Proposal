@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>.......</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Ga+Maamli&display=swap');
+      body {
+        background-color: #c4f8ff;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        /* overflow: hidden; */
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
+      h1 {
+        font-family: 'Ga Maamli', sans-serif;
+        color: #364d60;
+        font-size: 2.5em;
+        margin-bottom: 20px;
+      }
+
+      p {
+        font-family: fantasy;
+        font-size: 1.1em;
+      }
+
+      .container,
+      #romantic-content {
+        display: none;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .cartoon-image {
+        width: 80%;
+        max-width: 300px;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .buttons {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        font-size: 1.1em;
+        font-family: fantasy;
+        font-weight: 400;
+        padding: 10px 30px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: #0ce0fc;
+        color: #364d60;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin: 8px;
+      }
+
+      button:hover {
+        background-color: #44dbfc;
+        transform: scale(1.1);
+      }
+
+      #romantic-content {
+        background-color: #c4f8ff;
+        padding: 20px;
+        border-radius: 15px;
+      }
+
+      .romantic-content h1 {
+        color: #364d60;
+        font-size: 2em;
+      }
+
+      .move-no {
+        transition: transform 1s ease;
+      }
+
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2em;
+        }
+
+        p {
+          font-size: 1em;
+        }
+
+        .cartoon-image {
+          max-width: 100%;
+          width: 80%;
+        }
+
+        button {
+          font-size: 1.1em;
+          padding: 10px 35px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1em;
+        }
+
+        p {
+          font-size: 1em;
+        }
+
+        button {
+          font-size: 1em;
+          padding: 10px 35px;
+        }
+
+        .cartoon-image {
+          max-width: 80%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="initial-page" style="display: block">
+      <h1>
+        Hey Honeiii!💝👀 <br />Would you like to make Next Saturday special for
+        both of us?
+      </h1>
+      <img
+        class="cartoon-image"
+        src="https://i.pinimg.com/enabled_lo_mid/736x/1c/7f/bd/1c7fbd8b89c9a5b0572d32878bb05fbd.jpg"
+        alt="Cartoon Couple"
+      />
+      <div class="buttons">
+        <button id="no-second-page" onclick="noAnswerSecondPage()">No</button>
+        <button onclick="yesAnswer()">Yes</button>
+      </div>
+    </div>
+
+    <div id="romantic-content">
+      <h1>Yay! You Said Yes!</h1>
+      <img
+        class="cartoon-image"
+        src="https://i.pinimg.com/originals/63/90/3d/63903d9f34f02388fff5d0c7dd6e5085.gif"
+        alt="Romantic Cartoon"
+      />
+      <p>
+        &nbsp; &nbsp; &nbsp; we’re just meant to be 🤭<br />I knew you’d say
+        yes<br />Because how could you resist someone who cares so much about
+        you!🙂🥰
+      </p>
+    </div>
+
+    <script>
+      function yesAnswer() {
+        document.getElementById('initial-page').style.display = 'none';
+        document.getElementById('romantic-content').style.display = 'block';
+      }
+
+      function noAnswerSecondPage() {
+        const noButton = document.getElementById('no-second-page');
+
+        const randomX = Math.floor(Math.random() * 60) + 10;
+        const randomY = Math.floor(Math.random() * 60) + 10;
+
+        const containerWidth =
+          document.getElementById('initial-page').offsetWidth;
+        const containerHeight =
+          document.getElementById('initial-page').offsetHeight;
+
+        if (
+          randomX + noButton.offsetWidth > containerWidth ||
+          randomY + noButton.offsetHeight > containerHeight
+        ) {
+          return;
+        }
+
+        noButton.style.position = 'absolute';
+        noButton.style.left = `${randomX}%`;
+        noButton.style.top = `${randomY}%`;
+
+        noButton.classList.add('move-no');
+      }
+    </script>
+  </body>
+</html>
